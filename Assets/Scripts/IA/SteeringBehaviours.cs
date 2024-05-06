@@ -57,4 +57,22 @@ public class SteeringBehaviours : MonoBehaviour //Aiudado por ChatGPT
         Vector3 steeringForce = agent.CalculateVelocity(desiredVelocity);
         agent.ApplyBehavior(steeringForce);
     }
+
+    /*public void FollowPath(BasicAgent agent, Path path)
+    {
+        if (path.waypoints.Count == 0) return;
+
+        // Asumir que agent tiene un índice actual del waypoint que está siguiendo
+        if (agent.currentWaypointIndex < 0 || agent.currentWaypointIndex >= path.waypoints.Count)
+            agent.currentWaypointIndex = 0; // reiniciar o iniciar el índice
+
+        Transform targetWaypoint = path.waypoints[agent.currentWaypointIndex];
+        Seek(agent, targetWaypoint); // Usar el comportamiento Seek para moverse hacia el waypoint actual
+
+        // Comprobar si el agente está cerca del waypoint para cambiar al siguiente
+        if (Vector3.Distance(agent.transform.position, targetWaypoint.position) < agent.waypointTolerance)
+        {
+            agent.currentWaypointIndex = (agent.currentWaypointIndex + 1) % path.waypoints.Count; // pasar al siguiente waypoint, ciclar al principio
+        }
+    }*/
 }

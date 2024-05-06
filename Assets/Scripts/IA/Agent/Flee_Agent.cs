@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Flee_Agent : BasicAgent
 { 
-    void Update()
+    public void Update()
     {
         behaviours.Flee(aTarget);
     }
