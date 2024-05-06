@@ -4,75 +4,75 @@ using UnityEngine;
 
 public class SteeringBehaviours : MonoBehaviour //Aiudado por ChatGPT
 {
-    public void Seek(BasicAgent agent)
+    public void Seek(BasicAgent t_agent)
     {
-        Vector3 desiredVelocity = (agent.aTarget.transform.position - agent.transform.position).normalized * agent.maxSpeed;
-        Vector3 steeringForce = agent.CalculateVelocity(desiredVelocity);
-        agent.ApplyBehavior(steeringForce);
+        Vector3 desiredVel = (t_agent.aTarget.transform.position - t_agent.transform.position).normalized * t_agent.maxSpeed;
+        Vector3 steering = t_agent.CalculateVelocity(desiredVel);
+        t_agent.ApplyBehavior(steering);
     }
 
-    public void Flee(BasicAgent agent)
+    public void Flee(BasicAgent t_agent)
     {
-        Vector3 desiredVelocity = (agent.transform.position - agent.aTarget.transform.position).normalized * agent.maxSpeed;
-        Vector3 steeringForce = agent.CalculateVelocity(desiredVelocity);
-        agent.ApplyBehavior(steeringForce);
+        Vector3 desiredVel = (t_agent.transform.position - t_agent.aTarget.transform.position).normalized * t_agent.maxSpeed;
+        Vector3 steering = t_agent.CalculateVelocity(desiredVel);
+        t_agent.ApplyBehavior(steering);
     }
 
-    public void Arrive(BasicAgent agent)
+    public void Arrive(BasicAgent t_agent)
     {
-        float distance = Vector3.Distance(agent.transform.position, agent.aTarget.transform.position);
-        if (distance < agent.slowingFactor)
+        float distance = Vector3.Distance(t_agent.transform.position, t_agent.aTarget.transform.position);
+        if (distance < t_agent.slowingFactor)
         {
-            float speed = Mathf.Lerp(0, agent.maxSpeed, distance / agent.slowingFactor);
-            Vector3 desiredVelocity = (agent.aTarget.transform.position - agent.transform.position).normalized * speed;
-            Vector3 steeringForce = agent.CalculateVelocity(desiredVelocity);
-            agent.ApplyBehavior(steeringForce);
+            float speed = Mathf.Lerp(0, t_agent.maxSpeed, distance / t_agent.slowingFactor);
+            Vector3 desiredVel = (t_agent.aTarget.transform.position - t_agent.transform.position).normalized * speed;
+            Vector3 steering = t_agent.CalculateVelocity(desiredVel);
+            t_agent.ApplyBehavior(steering);
         } 
     }
 
-    public void Wander(BasicAgent agent, float displacement, float radius)
+    public void Wander(BasicAgent t_agent, float displacement, float radius)
     {
-        Vector3 wanderForce = agent.rb.velocity.normalized * displacement + Random.insideUnitSphere * radius;
-        Vector3 steeringForce = agent.CalculateVelocity(wanderForce.normalized * agent.maxSpeed);
-        agent.ApplyBehavior(steeringForce);
+        Vector3 wanderForce = t_agent.rb.velocity.normalized * displacement + Random.insideUnitSphere * radius;
+        Vector3 steering = t_agent.CalculateVelocity(wanderForce.normalized * t_agent.maxSpeed);
+        t_agent.ApplyBehavior(steering);
     }
 
-    public void Pursuit(BasicAgent agent)
-    {
-        float T = 3f; // Predict future position in 3 seconds
-        Rigidbody targetRb = agent.aTarget.GetComponent<Rigidbody>(); // Obtiene el Rigidbody del target
-        Vector3 futurePosition = agent.aTarget.transform.position + targetRb.velocity * T;
-        Vector3 desiredVelocity = (futurePosition - agent.transform.position).normalized * agent.maxSpeed;
-        Vector3 steeringForce = agent.CalculateVelocity(desiredVelocity);
-        agent.ApplyBehavior(steeringForce);
-        Arrive(agent); // Optionally call Arrive to slow down when near target
-    }
-
-    public void Evade(BasicAgent agent)
+    public void Pursuit(BasicAgent t_agent)
     {
         float T = 3f; // Predict future position in 3 seconds
-        Rigidbody targetRb = agent.aTarget.GetComponent<Rigidbody>(); // Obtiene el Rigidbody del target
-        Vector3 futurePosition = agent.aTarget.transform.position + targetRb.velocity * T;
-        Vector3 desiredVelocity = (agent.transform.position - futurePosition).normalized * agent.maxSpeed;
-        Vector3 steeringForce = agent.CalculateVelocity(desiredVelocity);
-        agent.ApplyBehavior(steeringForce);
+        Rigidbody targetRb = t_agent.aTarget.GetComponent<Rigidbody>(); // Obtiene el Rigidbody del target
+        Vector3 futurePosition = t_agent.aTarget.transform.position + targetRb.velocity * T;
+        Vector3 desiredVel = (futurePosition - t_agent.transform.position).normalized * t_agent.maxSpeed;
+        Vector3 steering = t_agent.CalculateVelocity(desiredVel);
+        t_agent.ApplyBehavior(steering);
+        Arrive(t_agent); // Optionally call Arrive to slow down when near target
     }
 
-    /*public void FollowPath(BasicAgent agent, Path path)
+    public void Evade(BasicAgent t_agent)
+    {
+        float T = 3f; // Predict future position in 3 seconds
+        Rigidbody targetRb = t_agent.aTarget.GetComponent<Rigidbody>(); // Obtiene el Rigidbody del target
+        Vector3 futurePosition = t_agent.aTarget.transform.position + targetRb.velocity * T;
+        Vector3 desiredVel = (t_agent.transform.position - futurePosition).normalized * t_agent.maxSpeed;
+        Vector3 steering = t_agent.CalculateVelocity(desiredVel);
+        t_agent.ApplyBehavior(steering);
+    }
+
+    /*public void FollowPath(BasicAgent t_agent, PathFollowing path) //Aiuda ChatGPT
     {
         if (path.waypoints.Count == 0) return;
 
-        // Asumir que agent tiene un índice actual del waypoint que está siguiendo
-        if (agent.currentWaypointIndex < 0 || agent.currentWaypointIndex >= path.waypoints.Count)
-            agent.currentWaypointIndex = 0; // reiniciar o iniciar el índice
+        // Asumir que t_agent tiene un índice actual del waypoint que está siguiendo
+        if (t_agent.currentWaypointIndex < 0 || t_agent.currentWaypointIndex >= path.waypoints.Count)
+            t_agent.currentWaypointIndex = 0; // reiniciar o iniciar el índice
 
-        Transform targetWaypoint = path.waypoints[agent.currentWaypointIndex];
-        Seek(agent, targetWaypoint); // Usar el comportamiento Seek para moverse hacia el waypoint actual
+        Transform targetWaypoint = path.waypoints[t_agent.currentWaypointIndex];
+        Seek(t_agent, targetWaypoint); // Usar el comportamiento Seek para moverse hacia el waypoint actual
 
-        // Comprobar si el agente está cerca del waypoint para cambiar al siguiente
-        if (Vector3.Distance(agent.transform.position, targetWaypoint.position) < agent.waypointTolerance)
+        // Comprobar si el t_agente está cerca del waypoint para cambiar al siguiente
+        if (Vector3.Distance(t_agent.transform.position, targetWaypoint.position) < t_agent.waypointTolerance)
         {
-            agent.currentWaypointIndex = (agent.currentWaypointIndex + 1) % path.waypoints.Count; // pasar al siguiente waypoint, ciclar al principio
+            t_agent.currentWaypointIndex = (t_agent.currentWaypointIndex + 1) % path.waypoints.Count; // pasar al siguiente waypoint, ciclar al principio
         }
     }*/
 }

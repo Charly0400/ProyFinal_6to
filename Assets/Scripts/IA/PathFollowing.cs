@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PathFollowing : MonoBehaviour
 {
-   /* public List<Transform> waypoints = new List<Transform>();
+    public List<Transform> waypoints = new List<Transform>();
 
     private void Awake()
     {
@@ -18,5 +18,5 @@ public class PathFollowing : MonoBehaviour
         {
             Gizmos.DrawSphere(waypoint.position, 0.5f); // Dibuja esferas en cada punto de control
         }
-    } */
+    } 
 }
