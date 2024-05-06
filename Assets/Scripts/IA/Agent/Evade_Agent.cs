@@ -6,6 +6,6 @@ public class Evade_Agent : BasicAgent
 {
     void Update()
     {
-        behaviours.Evade(aTarget);
+        //behaviours.Evade(aTarget);
     }
 }

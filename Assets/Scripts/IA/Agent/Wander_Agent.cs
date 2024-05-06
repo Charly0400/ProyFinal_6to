@@ -8,6 +8,6 @@ public class Wander_Agent : BasicAgent
     [SerializeField] private float radius;
     void Update()
     {
-        behaviours.Wander(aTarget, displacement, radius);
+        //behaviours.Wander(aTarget, displacement, radius);
     }
 }
