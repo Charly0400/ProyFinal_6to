@@ -55,7 +55,6 @@ public class BasicAgent : MonoBehaviour
         steering = Vector3.ClampMagnitude(steering, maxForce);
         steering /= mass;
         return Vector3.ClampMagnitude(rb.velocity + steering, maxSpeed);
-        //Aiudado por chatGPT
     }
 
     public void ApplyBehavior(Vector3 force)

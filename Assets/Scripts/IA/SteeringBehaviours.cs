@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SteeringBehaviours : MonoBehaviour //Aiudado por ChatGPT
+public class SteeringBehaviours : MonoBehaviour 
 {
     public void Seek(BasicAgent t_agent)
     {
