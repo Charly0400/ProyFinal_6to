@@ -12,7 +12,7 @@ public class Way : MonoBehaviour
     {
        door.OpenLock();
         door2.OpenLock();
-        
+        Debug.Log("Open");
     }
     
 }
