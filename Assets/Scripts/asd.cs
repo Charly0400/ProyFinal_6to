@@ -8,43 +8,18 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class asd : MonoBehaviour {
 
-    public XRBaseInteractable knobInteractable; // El XR Knob que controlará la rotación
-    public float rotationSpeed = 10f; // Velocidad de rotación
-
-    private bool isInteracting = false; // Bandera para saber si se está interactuando con el knob
+    public XRKnob knobInteractable; // El XR Knob que controlará la rotación
+    public GameObject cristal;
+  
+    private void Start() {
+        knobInteractable = GetComponent<XRKnob>();
+    }
 
     void Update() {
-        if (isInteracting) {
-            if (knobInteractable.interactorsSelecting.Count > 0) {
-                // Obtenemos el primer interactor seleccionando
-                //XRBaseInteractor interactor = knobInteractable.interactorsSelecting[0];
 
-                // Calculamos la rotación basada en el movimiento del interactor
-                //float rotationAmount = interactor.transform.localRotation.z * rotationSpeed * Time.deltaTime;
-
-                // Aplicamos la rotación al objeto
-                //transform.Rotate(Vector3.up, rotationAmount);
-            }
-        }
+        cristal.transform.Rotate(Vector3.up * knobInteractable.value);
     }
 
-    private void OnEnable() {
-        knobInteractable.selectEntered.AddListener(OnSelectEnter);
-        knobInteractable.selectExited.AddListener(OnSelectExit);
-    }
-
-    private void OnDisable() {
-        knobInteractable.selectEntered.RemoveListener(OnSelectEnter);
-        knobInteractable.selectExited.RemoveListener(OnSelectExit);
-    }
-
-    void OnSelectEnter(SelectEnterEventArgs args) {
-        isInteracting = true;
-    }
-
-    void OnSelectExit(SelectExitEventArgs args) {
-        isInteracting = false;
-    }
     /*/public GameObject cubo;
     public XRKnob ruedita;
     public float value_Ruedita;
