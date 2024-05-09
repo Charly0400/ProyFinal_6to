@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: b3956bc4e9ef9c64e9500a89a167e6b8
+  m_OcclusionCullingData: {fileID: 36300000, guid: a24bf2ad4bc0d7d41a9f4e7ba42c7225, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -14502,8 +14502,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113644797}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.16, y: 1.25, z: 2.98}
+  m_LocalRotation: {x: -0, y: -0.9923072, z: -0, w: 0.12380049}
+  m_LocalPosition: {x: 0.87, y: 1.25, z: 2.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14511,7 +14511,7 @@ Transform:
   - {fileID: 257823218}
   m_Father: {fileID: 0}
   m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 194.223, z: 0}
 --- !u!114 &1113644807
 MonoBehaviour:
   m_ObjectHideFlags: 0
