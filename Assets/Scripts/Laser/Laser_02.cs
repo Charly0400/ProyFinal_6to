@@ -42,15 +42,15 @@ public class Laser_02 : MonoBehaviour
                 {
                     for (int j = (i + 1); j <= 5; j++)
                     {
-                       lr.SetPosition(j, hit.point);
+                        lr.SetPosition(j, hit.point);
                     }
 
                     var door = hit.transform.gameObject.GetComponent<Way>();
 
-                    if(door != null) door.OpenTheWaaay();
+                    if (door != null) door.OpenTheWaaay();
                     break;
                 }
-     
+
             }
         }
     }

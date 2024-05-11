@@ -10,10 +10,12 @@ public class Way : MonoBehaviour
     public GameObject portal;
     public void OpenTheWaaay()
     {
+        Debug.Log("Open");
         portal.SetActive(true);
         portal_animator.Play("Open");
-        portal_animator.Play("door_3_open");
-        Debug.Log("Open");
+        Debug.Log(portal_animator);
+        door_animator.Play("Open_Laser");
+        Debug.Log(door_animator);
     }
     
 
