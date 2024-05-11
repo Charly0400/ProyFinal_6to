@@ -55,9 +55,10 @@ public class Button : MonoBehaviour
         }
     }
 
-    void OnMouseDown()
+   /* void OnMouseDown()
     {
         Debug.Log(name);
         ActivarCubo();
-    }
+    } 
+   */
 }
