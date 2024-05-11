@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Content.Interaction;
 
 public class Button : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Button : MonoBehaviour
     public bool desactivado;
     public AudioClip sonido;
     public Controlador controlador;
+    public XRPushButton button;
 
     void Start()
     {
@@ -55,6 +57,11 @@ public class Button : MonoBehaviour
         }
     }
 
+    public void ButtonDown(XRPushButton button)
+    {
+        Debug.Log(name + " selected!"); // Puedes eliminar esto si no lo necesitas
+        ActivarCubo();
+    }
    /* void OnMouseDown()
     {
         Debug.Log(name);
