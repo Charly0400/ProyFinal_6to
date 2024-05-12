@@ -54,7 +54,7 @@ public class PalancasPuzzle : MonoBehaviour
         {
             foreach (GameObject a in alavancas)
             {
-                a.GetComponent<Palancas>().podeVirar = false;
+                a.GetComponent<Palancas>().puedeGirar = false;
                 seCerto();
             }
         } 

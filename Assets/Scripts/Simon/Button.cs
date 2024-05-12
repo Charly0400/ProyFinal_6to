@@ -17,7 +17,7 @@ public class Button : MonoBehaviour
     void Start()
     {
         intensidadLuz = luz.intensity;
-
+        button = GetComponent<XRPushButton>();
     }
 
     public void ActivarCubo()
