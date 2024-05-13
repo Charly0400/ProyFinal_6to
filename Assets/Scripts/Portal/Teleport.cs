@@ -5,7 +5,7 @@ using UnityEngine;
 public class Teleport : MonoBehaviour
 {
     [SerializeField] private Transform transformPosition;
-
+    public Material skybox1;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,6 +13,8 @@ public class Teleport : MonoBehaviour
         {
             other.gameObject.transform.position = transformPosition.position;
             Debug.Log("HOLA");
+
+            RenderSettings.skybox =  skybox1;
         }
     }
 

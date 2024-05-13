@@ -7,6 +7,7 @@ public class Controlador : MonoBehaviour
     public Button[] cubos;
 
     public GameObject premio;
+    public Animator animator_Portal;
     public List<int> listaAleatoria = new List<int>();
 
     public bool listaLlena;
@@ -31,7 +32,7 @@ public class Controlador : MonoBehaviour
 
     void LlenarListaAleatoria()
     {
-        for (int i = 0; i <= 500; i++)
+        for (int i = 0; i <= 200; i++)
         {
             listaAleatoria.Add(Random.Range(0, 4));
         }
@@ -122,8 +123,9 @@ public class Controlador : MonoBehaviour
 
     public void FinDelJuego()
     {
-        premio.SetActive(false);
-        Debug.Log("HOOHO");
+        premio.SetActive(true);
+        animator_Portal.Play("Open");
+        Debug.Log("POZOLE");
     
     }
 
