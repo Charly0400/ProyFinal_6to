@@ -8,6 +8,7 @@ TagManager:
   - Mirror
   - Cubes
   - Target
+  - Rocks
   layers:
   - Default
   - TransparentFX

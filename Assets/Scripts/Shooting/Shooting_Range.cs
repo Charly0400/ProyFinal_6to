@@ -19,6 +19,7 @@ public class Shooting_Range : MonoBehaviour
     public void CheckAllTargetsDestroyed()
     {
         destroyedTargetsCount++;
+        Debug.Log(destroyedTargetsCount);
 
         // Verificar si se han destruido todos los objetivos
         if (destroyedTargetsCount >= targets.Length && !finalEventActivated)

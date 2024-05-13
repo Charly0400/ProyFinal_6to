@@ -8,8 +8,13 @@ public class Container : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Cubes")
+        if(other.tag == "Rocks")
+        {
             cubes++;
+            Debug.Log(cubes);
+            Destroy(gameObject);
+
+        }
     }
 
 
