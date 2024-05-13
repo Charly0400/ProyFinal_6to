@@ -5,6 +5,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Shooting_Range : MonoBehaviour
 {
+    public Animator portal_Animator;
     public GameObject[] targets;
     public GameObject finalEventObject; // Objeto que se activará cuando se completen todos los objetivos
 
@@ -24,9 +25,8 @@ public class Shooting_Range : MonoBehaviour
         // Verificar si se han destruido todos los objetivos
         if (destroyedTargetsCount >= targets.Length && !finalEventActivated)
         {
-            // Activar el evento final si todos los objetivos han sido destruidos
-            finalEventObject.SetActive(true);
             finalEventActivated = true;
+            portal_Animator.Play("Open_ShootinfPortal");
         }
     }
 }

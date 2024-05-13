@@ -24,8 +24,14 @@ public class Bullets : MonoBehaviour
     {
         if (other.gameObject.tag == "Target") 
         {
+            Animator animator = other.gameObject.GetComponent<Animator>();
+            if (animator != null )
+            {
+                animator.Play("Muelto");
+            }
+
             Debug.Log("Objetivo destruido");
-            //Destroy(other.gameObject);
+            // Destroy(other.gameObject);
             Shooting_Range shootingRange = FindObjectOfType<Shooting_Range>();
             shootingRange.CheckAllTargetsDestroyed();
             Destroy(gameObject);
