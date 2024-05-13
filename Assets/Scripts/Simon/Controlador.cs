@@ -6,7 +6,7 @@ public class Controlador : MonoBehaviour
 {
     public Button[] cubos;
 
-    public Looked door;
+    public GameObject premio;
     public List<int> listaAleatoria = new List<int>();
 
     public bool listaLlena;
@@ -122,8 +122,9 @@ public class Controlador : MonoBehaviour
 
     public void FinDelJuego()
     {
+        premio.SetActive(false);
         Debug.Log("HOOHO");
-        door.OpenLock();
+    
     }
 
 }
