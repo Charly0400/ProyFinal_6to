@@ -9,6 +9,7 @@ TagManager:
   - Cubes
   - Target
   - Rocks
+  - Trofeo
   layers:
   - Default
   - TransparentFX

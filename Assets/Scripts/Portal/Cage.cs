@@ -5,6 +5,7 @@ using UnityEngine;
 public class Cage : MonoBehaviour
 {
     public Animator portal_Animator;
+    public GameObject trofeo;
 
     public int CubesNecesary;
 
@@ -15,7 +16,8 @@ public class Cage : MonoBehaviour
         if (Container.cubes == CubesNecesary)
         {
             portal_Animator.Play("Open_PortalsPorta_1l");
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            trofeo.SetActive(true);
             
         }
     }
