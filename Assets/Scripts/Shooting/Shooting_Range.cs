@@ -7,7 +7,7 @@ public class Shooting_Range : MonoBehaviour
 {
     public Animator portal_Animator;
     public GameObject[] targets;
-    public GameObject finalEventObject; // Objeto que se activará cuando se completen todos los objetivos
+    public GameObject finalEventObjec, trofeo; // Objeto que se activará cuando se completen todos los objetivos
 
     private int destroyedTargetsCount = 0;
     private bool finalEventActivated = false;
@@ -26,6 +26,7 @@ public class Shooting_Range : MonoBehaviour
         if (destroyedTargetsCount >= targets.Length && !finalEventActivated)
         {
             finalEventActivated = true;
+            trofeo.SetActive(true);
             portal_Animator.Play("Open_ShootinfPortal_1");
         }
     }

@@ -7,6 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class PuzzleManager : MonoBehaviour
 {
+    public Animator door_Animator;
     [SerializeField]
     private GameObject portalToActivate;
     [SerializeField]
@@ -17,7 +18,7 @@ public class PuzzleManager : MonoBehaviour
     private UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor[] Sockets;
     private void PuzzleDone()
     {
-        
+        door_Animator.Play("Cuarto_Final");
         portalToActivate.gameObject.SetActive(true); 
     }
 
@@ -26,7 +27,7 @@ public class PuzzleManager : MonoBehaviour
         if (actualPuzzleSteps < puzzleSteps - 1)
         {
             actualPuzzleSteps++;
-            //uiManagerRef.UIAugmenter();
+            //uiManagerRef.UIAugmenter();   
         }
 
         else if (actualPuzzleSteps == puzzleSteps - 1)

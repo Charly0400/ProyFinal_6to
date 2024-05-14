@@ -6,7 +6,7 @@ public class Controlador : MonoBehaviour
 {
     public Button[] cubos;
 
-    public GameObject premio;
+    public GameObject premio, portal;
     public Animator animator_Portal;
     public List<int> listaAleatoria = new List<int>();
 
@@ -124,6 +124,7 @@ public class Controlador : MonoBehaviour
     public void FinDelJuego()
     {
         premio.SetActive(true);
+        portal.SetActive(true);
         animator_Portal.Play("Open_ButtonPortal_1");
         Debug.Log("POZOLE");
     

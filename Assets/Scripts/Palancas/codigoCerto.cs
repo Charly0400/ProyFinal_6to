@@ -6,12 +6,13 @@ public class codigoCerto : MonoBehaviour
 {
     public Animator portal_Animator;
     public Animator marco_Portal;
-    public GameObject portal;
+    public GameObject portal, trofeo;
 
     public IEnumerator Palancas()
     {
         Debug.Log("Open");
         portal.SetActive(true);
+        trofeo.SetActive(true);
         marco_Portal.Play("Marco_Portal");
 
         // Esperar 4 segundos antes de continuar
