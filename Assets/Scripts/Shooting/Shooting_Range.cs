@@ -26,7 +26,7 @@ public class Shooting_Range : MonoBehaviour
         if (destroyedTargetsCount >= targets.Length && !finalEventActivated)
         {
             finalEventActivated = true;
-            portal_Animator.Play("Open_ShootinfPortal");
+            portal_Animator.Play("Open_ShootinfPortal_1");
         }
     }
 }

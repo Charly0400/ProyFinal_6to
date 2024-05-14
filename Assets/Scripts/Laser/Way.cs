@@ -12,7 +12,7 @@ public class Way : MonoBehaviour
     {
         Debug.Log("Open");
         portal.SetActive(true);
-        portal_animator.Play("Open_LaserPortal");
+        portal_animator.Play("Open_LaserPortal_1");
         Debug.Log(portal_animator);
         door_animator.Play("Open_Laser");
         Debug.Log(door_animator);

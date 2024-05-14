@@ -124,7 +124,7 @@ public class Controlador : MonoBehaviour
     public void FinDelJuego()
     {
         premio.SetActive(true);
-        animator_Portal.Play("Open");
+        animator_Portal.Play("Open_ButtonPortal_1");
         Debug.Log("POZOLE");
     
     }

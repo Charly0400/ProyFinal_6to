@@ -14,7 +14,7 @@ public class Cage : MonoBehaviour
     {
         if (Container.cubes == CubesNecesary)
         {
-            portal_Animator.Play("Open_PortalsPortal");
+            portal_Animator.Play("Open_PortalsPorta_1l");
             gameObject.SetActive(false);
             
         }

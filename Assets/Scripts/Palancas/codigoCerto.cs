@@ -17,6 +17,6 @@ public class codigoCerto : MonoBehaviour
         // Esperar 4 segundos antes de continuar
         yield return new WaitForSeconds(2f);
         portal.SetActive(true);
-        portal_Animator.Play("Open_PalancasPortal");
+        portal_Animator.Play("Open_PalancasPortal_1");
     }
 }
