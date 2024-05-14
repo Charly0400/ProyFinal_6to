@@ -43,7 +43,7 @@ Material:
     m_Ints: []
     m_Floats:
     - MyFloat: 0.5
-    - MyRange: 1.9
+    - MyRange: 2.1
     - _MyFloat: 0.5
     - _MyRange: 7.37
     m_Colors:
