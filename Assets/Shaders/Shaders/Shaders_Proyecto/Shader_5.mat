@@ -12,7 +12,7 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -30,16 +30,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 100, y: 100}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
         m_Texture: {fileID: 2800000, guid: d0f47a7e9884f444f9277336e7f340d0, type: 3}
-        m_Scale: {x: 4, y: 4}
+        m_Scale: {x: 150, y: 150}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _FPow: 9.5
-    - _Factor: 46.05
+    - _FPow: 0.63
+    - _Factor: 97.2
     - _Glossiness: 0.5
     - _Metallic: 0
     - _NormalStrength: 1
