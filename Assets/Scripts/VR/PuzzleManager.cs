@@ -18,6 +18,7 @@ public class PuzzleManager : MonoBehaviour
     private UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor[] Sockets;
     private void PuzzleDone()
     {
+        Debug.Log("EndGAME");
         door_Animator.Play("Cuarto_Final");
         portalToActivate.gameObject.SetActive(true); 
     }
