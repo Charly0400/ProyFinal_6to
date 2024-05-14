@@ -42,5 +42,5 @@ Material:
     - _MyColor3: {r: 0, g: 1, b: 0.8916161, a: 1}
     - _Mycolor: {r: 0.6084906, g: 1, b: 0.6395627, a: 1}
     - _Mycolor2: {r: 0, g: 0.617962, b: 0.8301887, a: 1}
-    - _RimColor: {r: 0.99627376, g: 1, b: 0.995283, a: 1}
+    - _RimColor: {r: 1, g: 0, b: 0.870769, a: 1}
   m_BuildTextureStacks: []

@@ -26,11 +26,11 @@ Material:
         m_Offset: {x: 12.46, y: 96.72}
     - _AlbedoTex:
         m_Texture: {fileID: 2800000, guid: 48a7a87735f10bb47b797a6d365460e5, type: 3}
-        m_Scale: {x: 5, y: 5}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpTex:
         m_Texture: {fileID: 2800000, guid: 65e04a1dc2e4e4548af2708b455f1001, type: 3}
-        m_Scale: {x: 15, y: 15}
+        m_Scale: {x: 4, y: 4}
         m_Offset: {x: 0, y: 0}
     - _CubeTex:
         m_Texture: {fileID: 8900000, guid: 7659947706e294d97a22faa1d4011724, type: 3}
