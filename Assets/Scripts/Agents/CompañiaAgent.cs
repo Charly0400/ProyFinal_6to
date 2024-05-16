@@ -75,7 +75,7 @@ public class CompañiaAgent : BasicAgent
     {
         if (!currentAnimationStateName.Equals("walk"))
         {
-            animator.Play("Walk", 0);
+            animator.Play("Run 0", 0);
             currentAnimationStateName = "walk";
         }
         maxVel *= 2;
@@ -88,7 +88,7 @@ public class CompañiaAgent : BasicAgent
     {
         if (!currentAnimationStateName.Equals("idle"))
         {
-            animator.Play("Idle", 0);
+            animator.Play("Idle 0", 0);
             currentAnimationStateName = "idle";
         }
         rb.velocity = Vector3.zero;

@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class FeedTheAgent : MonoBehaviour
 {
-    CompañiaAgent companionAgent;
+    CompañiaAgent tucan;
 
     void Start()
     {
-        companionAgent = GameObject.Find("Sand Spider").GetComponent<CompañiaAgent>();
+        tucan = GameObject.Find("Tucan").GetComponent<CompañiaAgent>();
     }
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            companionAgent.feed(gameObject.transform);
+            tucan.feed(gameObject.transform);
         }
     }
 }

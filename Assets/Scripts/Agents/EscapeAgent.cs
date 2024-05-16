@@ -66,7 +66,7 @@ public class EscapeAgent : BasicAgent
         }
         else
         {
-            newState = AgressiveAgentStates.Fleeting;
+            newState = AgressiveAgentStates.Escape;
             if (Vector3.Distance(transform.position, target.position) > stopThreshold)
             {
                 target = null;
@@ -90,29 +90,29 @@ public class EscapeAgent : BasicAgent
         switch (agentState)
         {
             case AgressiveAgentStates.Idle:
-                idling();
+                idle();
                 break;
-            case AgressiveAgentStates.Fleeting:
-                fleeting();
+            case AgressiveAgentStates.Escape:
+                escaping();
                 break;
         }
     }
 
-    private void idling()
+    private void idle()
     {
         if (!currentAnimationStateName.Equals("idle"))
         {
-            animator.Play("Idle", 0);
+            animator.Play("Rabbit_Idle 0", 0);
             currentAnimationStateName = "idle";
         }
         rb.velocity = Vector3.zero;
     }
 
-    private void fleeting()
+    private void escaping()
     {
         if (!currentAnimationStateName.Equals("walk"))
         {
-            animator.Play("Walk", 0);
+            animator.Play("Rabbit_Run 0", 0);
             currentAnimationStateName = "walk";
         }
         if (target == null)
@@ -133,6 +133,6 @@ public class EscapeAgent : BasicAgent
     private enum AgressiveAgentStates
     {
         Idle,
-        Fleeting
+        Escape
     }
 }

@@ -50,7 +50,7 @@ public class TerritoryAgent : BasicAgent
     void movementManager() {
         switch (agentState) {
             case AgressiveAgentStates.Idle:
-                idling();
+                idle();
                 break;
             case AgressiveAgentStates.Seeking:
                 pursuiting();
@@ -86,7 +86,7 @@ public class TerritoryAgent : BasicAgent
         }
     }
 
-    private void idling() {
+    private void idle() {
         if (!currentAnimationStateName.Equals("idle")) {
             animator.Play("Crocodile_Idle 0", 0);
             currentAnimationStateName = "idle";

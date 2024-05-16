@@ -8,7 +8,7 @@ public class AgrupacionAgent : BasicAgent
     [SerializeField] float eyesPerceptRadious, earsPerceptRadious;
     [SerializeField] Transform eyesPercept, earsPercept;
     [SerializeField] AgressiveAgentStates agentState;
-    [SerializeField] Collider[] perceibed, perceibed2;
+    Collider[] perceibed, perceibed2;
     string currentAnimationStateName;
     [SerializeField] Rigidbody rb;
     Animator animator;
@@ -90,7 +90,7 @@ public class AgrupacionAgent : BasicAgent
         switch (agentState)
         {
             case AgressiveAgentStates.Idle:
-                idling();
+                idle();
                 break;
             case AgressiveAgentStates.Wander:
                 wandering();
@@ -105,7 +105,7 @@ public class AgrupacionAgent : BasicAgent
     {
         if (!currentAnimationStateName.Equals("walk"))
         {
-            animator.Play("Walk", 0);
+            animator.Play("walk 0", 0);
             currentAnimationStateName = "walk";
         }
         maxVel *= 2;
@@ -114,11 +114,11 @@ public class AgrupacionAgent : BasicAgent
         maxVel /= 2;
     }
 
-    private void idling()
+    private void idle()
     {
         if (!currentAnimationStateName.Equals("idle"))
         {
-            animator.Play("Idle", 0);
+            animator.Play("idle 0", 0);
             currentAnimationStateName = "idle";
         }
         rb.velocity = Vector3.zero;
@@ -128,7 +128,7 @@ public class AgrupacionAgent : BasicAgent
     {
         if (!currentAnimationStateName.Equals("walk"))
         {
-            animator.Play("Walk", 0);
+            animator.Play("walk 0", 0);
             currentAnimationStateName = "walk";
         }
         if ((wanderNextPosition == null) ||
