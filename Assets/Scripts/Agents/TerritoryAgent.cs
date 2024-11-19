@@ -3,8 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Animator))]
 
-public class TerritoryAgent : BasicAgent
-{
+public class TerritoryAgent : BasicAgent {
     [SerializeField] AgressiveAgentStates agentState;
     string currentAnimationStateName;
     [SerializeField] Rigidbody rb;
@@ -68,10 +67,8 @@ public class TerritoryAgent : BasicAgent
         maxVel *= 2;
         rb.velocity = SteeringBehaviours.seek(this, target.position);
         rb.velocity = SteeringBehaviours.arrival(this, target.position, slowingRadius, stopThreshold);
-        if (Vector3.Distance(transform.position, target.position) <= slowingRadius)
-        {
-            if (!currentAnimationStateName.Equals("walk"))
-            {
+        if (Vector3.Distance(transform.position, target.position) <= slowingRadius) {
+            if (!currentAnimationStateName.Equals("walk")) {
                 animator.Play("Crocodile_Walk 0", 0);
                 currentAnimationStateName = "walk";
             }

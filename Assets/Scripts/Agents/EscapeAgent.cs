@@ -3,8 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Animator))]
 
-public class EscapeAgent : BasicAgent
-{
+public class EscapeAgent : BasicAgent {
     [SerializeField] float eyesPerceptRadious, earsPerceptRadious;
     [SerializeField] Transform eyesPercept, earsPercept;
     [SerializeField] AgressiveAgentStates agentState;
@@ -13,62 +12,48 @@ public class EscapeAgent : BasicAgent
     string currentAnimationStateName;
     Animator animator;
 
-    void Start()
-    {
+    void Start() {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         agentState = AgressiveAgentStates.Idle;
         currentAnimationStateName = "";
     }
 
-    void Update()
-    {
+    void Update() {
         perceptionManager();
         decisionManager();
     }
 
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
         perceibed = Physics.OverlapSphere(eyesPercept.position, eyesPerceptRadious);
         perceibed2 = Physics.OverlapSphere(earsPercept.position, earsPerceptRadious);
     }
 
-    void perceptionManager()
-    {
-        if (perceibed != null)
-        {
-            foreach (Collider tmp in perceibed)
-            {
-                if (tmp.CompareTag("Player"))
-                {
+    void perceptionManager() {
+        if (perceibed != null) {
+            foreach (Collider tmp in perceibed) {
+                if (tmp.CompareTag("Player")) {
                     target = tmp.transform;
                 }
             }
         }
-        if (perceibed2 != null)
-        {
-            foreach (Collider tmp in perceibed2)
-            {
-                if (tmp.CompareTag("Player"))
-                {
+        if (perceibed2 != null) {
+            foreach (Collider tmp in perceibed2) {
+                if (tmp.CompareTag("Player")) {
                     target = tmp.transform;
                 }
             }
         }
     }
 
-    void decisionManager()
-    {
+    void decisionManager() {
         AgressiveAgentStates newState;
-        if (target == null)
-        {
+        if (target == null) {
             newState = AgressiveAgentStates.Idle;
         }
-        else
-        {
+        else {
             newState = AgressiveAgentStates.Escape;
-            if (Vector3.Distance(transform.position, target.position) > stopThreshold)
-            {
+            if (Vector3.Distance(transform.position, target.position) > stopThreshold) {
                 target = null;
             }
         }
@@ -76,19 +61,15 @@ public class EscapeAgent : BasicAgent
         movementManager();
     }
 
-    void changeAgentState(AgressiveAgentStates t_newState)
-    {
-        if (agentState == t_newState)
-        {
+    void changeAgentState(AgressiveAgentStates t_newState) {
+        if (agentState == t_newState) {
             return;
         }
         agentState = t_newState;
     }
 
-    void movementManager()
-    {
-        switch (agentState)
-        {
+    void movementManager() {
+        switch (agentState) {
             case AgressiveAgentStates.Idle:
                 idle();
                 break;
@@ -98,40 +79,33 @@ public class EscapeAgent : BasicAgent
         }
     }
 
-    private void idle()
-    {
-        if (!currentAnimationStateName.Equals("idle"))
-        {
+    private void idle() {
+        if (!currentAnimationStateName.Equals("idle")) {
             animator.Play("Rabbit_Idle 0", 0);
             currentAnimationStateName = "idle";
         }
         rb.velocity = Vector3.zero;
     }
 
-    private void escaping()
-    {
-        if (!currentAnimationStateName.Equals("walk"))
-        {
+    private void escaping() {
+        if (!currentAnimationStateName.Equals("walk")) {
             animator.Play("Rabbit_Run 0", 0);
             currentAnimationStateName = "walk";
         }
-        if (target == null)
-        {
+        if (target == null) {
             return;
         }
         rb.velocity = SteeringBehaviours.flee(this, target.position);
     }
 
-    private void OnDrawGizmos()
-    {
+    private void OnDrawGizmos() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(eyesPercept.position, eyesPerceptRadious);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(earsPercept.position, earsPerceptRadious);
     }
 
-    private enum AgressiveAgentStates
-    {
+    private enum AgressiveAgentStates {
         Idle,
         Escape
     }

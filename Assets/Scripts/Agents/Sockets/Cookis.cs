@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
-public class Cookis : MonoBehaviour
-{
+public class Cookis : MonoBehaviour {
     public Transform cookiesSpawn;
     CompañiaAgent tucan;
     public GameObject cookies;
@@ -14,12 +13,11 @@ public class Cookis : MonoBehaviour
 
 
     void Start () {
-        tucan = GameObject.Find("Tucan").GetComponent<CompañiaAgent>();
+        tucan = GameObject.Find("Tucan_Acompañante").GetComponent<CompañiaAgent>();
         sX = GetComponent<XRSocketInteractor>();
     }
 
-    public void Feed()
-    {
+    public void Feed() {
         tucan.feed(player.gameObject.transform);
         IXRSelectInteractable objectEnteringSocket = sX.GetOldestInteractableSelected();
         //objectEnteringSocket.transform.gameObject.SetActive(false);
@@ -27,8 +25,7 @@ public class Cookis : MonoBehaviour
 
     }
 
-    public void SapwnCookies()
-    {
+    public void SapwnCookies() {
 
         //socket.SetActive(false);
         GameObject tempBullet = Instantiate(cookies, cookiesSpawn.position, Quaternion.identity);

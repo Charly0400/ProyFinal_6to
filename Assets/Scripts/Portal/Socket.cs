@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
-public class Socket : MonoBehaviour
-{
+public class Socket : MonoBehaviour {
     [Header("Rocks")]
     [SerializeField]
     public GameObject rock;
@@ -14,20 +13,11 @@ public class Socket : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         sX = GetComponent<XRSocketInteractor>();
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void Rocks()
-    {
+    public void Rocks() {
 
         //socket.SetActive(false);
         GameObject tempBullet = Instantiate(rock, rockTransform.position, Quaternion.identity);

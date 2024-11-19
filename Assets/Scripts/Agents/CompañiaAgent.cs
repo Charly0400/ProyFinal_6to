@@ -3,36 +3,30 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Animator))]
 
-public class CompañiaAgent : BasicAgent
-{
+public class CompañiaAgent : BasicAgent {
     [SerializeField] AgressiveAgentStates agentState;
     string currentAnimationStateName;
     [SerializeField] Rigidbody rb;
     bool feeded = false;
     Animator animator;
 
-    void Start()
-    {
+    void Start() {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         agentState = AgressiveAgentStates.Idle;
         currentAnimationStateName = "";
     }
 
-    void Update()
-    {
+    void Update() {
         decisionManager();
     }
 
-    void decisionManager()
-    {
+    void decisionManager() {
         AgressiveAgentStates newState;
-        if (!feeded)
-        {
+        if (!feeded) {
             newState = AgressiveAgentStates.Idle;
         }
-        else
-        {
+        else {
             newState = AgressiveAgentStates.Seeking;
             if (Vector3.Distance(transform.position, target.position) < stopThreshold)
             {
@@ -43,19 +37,15 @@ public class CompañiaAgent : BasicAgent
         movementManager();
     }
 
-    void changeAgentState(AgressiveAgentStates t_newState)
-    {
-        if (agentState == t_newState)
-        {
+    void changeAgentState(AgressiveAgentStates t_newState) {
+        if (agentState == t_newState) {
             return;
         }
         agentState = t_newState;
     }
 
-    void movementManager()
-    {
-        switch (agentState)
-        {
+    void movementManager() {
+        switch (agentState) {
             case AgressiveAgentStates.Idle:
                 idling();
                 break;
@@ -65,16 +55,13 @@ public class CompañiaAgent : BasicAgent
         }
     }
 
-    public void feed(Transform t_target)
-    {
+    public void feed(Transform t_target) {
         target = t_target;
         feeded = true;
     }
 
-    private void seeking()
-    {
-        if (!currentAnimationStateName.Equals("walk"))
-        {
+    private void seeking() {
+        if (!currentAnimationStateName.Equals("walk")){
             animator.Play("Run 0", 0);
             currentAnimationStateName = "walk";
         }
@@ -84,18 +71,15 @@ public class CompañiaAgent : BasicAgent
         maxVel /= 2;
     }
 
-    private void idling()
-    {
-        if (!currentAnimationStateName.Equals("idle"))
-        {
+    private void idling() {
+        if (!currentAnimationStateName.Equals("idle")) {
             animator.Play("Idle 0", 0);
             currentAnimationStateName = "idle";
         }
         rb.velocity = Vector3.zero;
     }
 
-    private enum AgressiveAgentStates
-    {
+    private enum AgressiveAgentStates {
         Idle,
         Seeking
     }

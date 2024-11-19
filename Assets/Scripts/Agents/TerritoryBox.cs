@@ -7,7 +7,7 @@ public class TerritoryBox : MonoBehaviour {
     TerritoryAgent rhino;
 
     private void Start() {
-        rhino = GameObject.Find("Crocodile").GetComponent<TerritoryAgent>();
+        rhino = GameObject.Find("Crocodile_Territorio").GetComponent<TerritoryAgent>();
     }
 
     private void OnTriggerEnter(Collider other) {
