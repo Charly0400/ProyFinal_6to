@@ -1824,7 +1824,7 @@
                     "name": "Teleport Mode Cancel",
                     "type": "Button",
                     "id": "d587b60c-39a0-4365-8075-477ce484ba0f",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -1864,6 +1864,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "f",
+                    "type": "Button",
+                    "id": "2ef5c66f-42e2-42ab-8d7c-82d4c3b0ebe8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1880,8 +1889,8 @@
                 },
                 {
                     "name": "",
-                    "id": "de466e6e-12bf-46a1-b0fd-ffbc343f3399",
-                    "path": "<XRController>{RightHand}/{GripButton}",
+                    "id": "77f05f55-e3db-4e95-a23d-59d18e873ca5",
+                    "path": "<XRController>{RightHand}/thumbstickDpadUp",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -1930,6 +1939,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Snap Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b26cbb23-9003-41b4-bb09-8f0dfde5f615",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "f",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "347ebef4-7382-47c5-8d27-5c336bbac5e6",
+                    "path": "<XRController>{RightHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "f",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

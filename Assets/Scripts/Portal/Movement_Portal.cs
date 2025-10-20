@@ -1,34 +1,64 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement_Portal : MonoBehaviour
-{
-    public float speed = 2f; // Velocidad de movimiento del objeto
-    public float leftLimit = -5f; // Límite izquierdo de movimiento relativo al punto inicial del objeto
-    public float rightLimit = 5f; // Límite derecho de movimiento relativo al punto inicial del objeto
-    private bool movingRight = true; // Indica si el objeto se está moviendo hacia la derecha
-    private float initialX; // Posición inicial en el eje X del objeto
+public class Movement_Portal : MonoBehaviour {
+    [Header("Configuración de Movimiento")]
+    public float speed = 2f;
+    public float leftLimit = -5f;
+    public float rightLimit = 5f;
 
-    void Start()
-    {
-        // Guarda la posición inicial del objeto en el eje X
-        initialX = transform.position.x;
+    private Vector3 initialPosition;
+    private Vector3 targetPosition;
+    private bool movingRight = true;
+
+    void Start() {
+        // Guardar posición inicial
+        initialPosition = transform.position;
+
+        // Establecer posición objetivo inicial
+        targetPosition = initialPosition + Vector3.right * rightLimit;
     }
 
-    void Update()
-    {
-        // Calcula los límites de movimiento basados en la posición inicial del objeto
-        float adjustedLeftLimit = initialX + leftLimit;
-        float adjustedRightLimit = initialX + rightLimit;
+    void Update() {
+        MoveObject();
+        CheckBoundaries();
+    }
 
-        // Mueve el objeto en la dirección adecuada
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+    void MoveObject() {
+        // Calcular dirección hacia el objetivo
+        Vector3 direction = (targetPosition - transform.position).normalized;
 
-        // Si el objeto alcanza un límite, invierte la dirección de movimiento
-        if (transform.position.x <= adjustedLeftLimit || transform.position.x >= adjustedRightLimit)
-        {
-            speed = -speed;
+        // Mover hacia el objetivo
+        transform.position += direction * speed * Time.deltaTime;
+    }
+
+    void CheckBoundaries() {
+        // Calcular límites absolutos
+        float currentX = transform.position.x;
+        float minX = initialPosition.x + leftLimit;
+        float maxX = initialPosition.x + rightLimit;
+
+        // Verificar si llegó al límite derecho
+        if (movingRight && currentX >= maxX - 0.1f) {
+            movingRight = false;
+            targetPosition = initialPosition + Vector3.right * leftLimit;
         }
+        // Verificar si llegó al límite izquierdo
+        else if (!movingRight && currentX <= minX + 0.1f) {
+            movingRight = true;
+            targetPosition = initialPosition + Vector3.right * rightLimit;
+        }
+    }
+
+    // Método opcional para debug visual en el Editor
+    void OnDrawGizmosSelected() {
+        Vector3 currentPos = Application.isPlaying ? initialPosition : transform.position;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(currentPos + Vector3.right * leftLimit, 0.3f);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(currentPos + Vector3.right * rightLimit, 0.3f);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(currentPos + Vector3.right * leftLimit, currentPos + Vector3.right * rightLimit);
     }
 }
